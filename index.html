@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especial para Giovana ✨</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            /* Forçando o rosa no fundo */
+            background-color: #ffcce0 !important;
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            overflow: hidden;
+        }
+
+        .cartao {
+            background: #ffffff;
+            width: 100%;
+            max-width: 350px;
+            padding: 30px 20px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 5px solid #ff99cc;
+            position: relative;
+            z-index: 10;
+        }
+
+        .img-pergunta {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+            border: 4px solid #ffb3d1;
+            background-color: #fff0f5;
+        }
+
+        h1 { color: #d81b60; font-size: 1.6rem; margin: 10px 0; }
+        p { color: #555; font-size: 1rem; line-height: 1.4; margin-bottom: 20px; }
+
+        .btn {
+            background: #ffffff;
+            border: 2px solid #ff85b3;
+            color: #d81b60;
+            padding: 15px;
+            margin: 8px 0;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            display: block;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .btn:active {
+            background: #ff85b3;
+            color: white;
+            transform: scale(0.95);
+        }
+
+        .btn-whats {
+            background: #25D366;
+            color: white !important;
+            border: none;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Corações subindo */
+        .decoracao {
+            position: fixed;
+            bottom: -50px;
+            font-size: 20px;
+            z-index: 1;
+            opacity: 0.5;
+            animation: subir 4s linear infinite;
+        }
+
+        @keyframes subir {
+            to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cartao">
+        <div id="t1">
+            <img src="https://http.cat/200" class="img-pergunta" alt="Fofo">
+            <h1>Oii, Giovana! ✨</h1>
+            <p>Eu tava aqui pensando... você topa responder umas perguntinhas rápidas? 😊</p>
+            <button class="btn" onclick="pular(2)">Bora lá! ✨</button>
+        </div>
+
+        <div id="t2" style="display:none">
+            <img src="https://http.cat/100" class="img-pergunta" alt="Pergunta">
+            <h1>Pergunta 1 🌸</h1>
+            <p>O que você prefere para um final de semana perfeito?</p>
+            <button class="btn" onclick="pular(3)">Filminho e pipoca 🍿</button>
+            <button class="btn" onclick="pular(3)">Sair para algum lugar 🍦</button>
+            <button class="btn" onclick="pular(3)">Jogar alguma coisa 🎮</button>
+        </div>
+
+        <div id="t3" style="display:none">
+            <img src="https://http.cat/202" class="img-pergunta" alt="Fofura">
+            <h1>Pergunta 2 🧸</h1>
+            <p>Se um garoto te fizesse um site fofo, o que você acharia?</p>
+            <button class="btn" onclick="pular(4)">Acharia super fofo! 🥰</button>
+            <button class="btn" onclick="pular(4)">Daria uma chance 💖</button>
+        </div>
+
+        <div id="t4" style="display:none">
+            <img src="https://http.cat/405" class="img-pergunta" alt="Final">
+            <h1>Última coisa... 😳</h1>
+            <p>Eu te achei muito gente boa e queria te conhecer melhor. O que acha da gente conversar?</p>
+            <a href="https://wa.me/5542988032177?text=Oi!%20Eu%20vi%20seu%20site%20e%20achei%20muito%20fofo!%20Vamos%20conversar%20sim%20😊" class="btn btn-whats">Aceito! Vamos pro Whats ✨</a>
+        </div>
+    </div>
+
+    <script>
+        // Função simples que funciona em qualquer navegador
+        function pular(tela) {
+            document.getElementById('t1').style.display = 'none';
+            document.getElementById('t2').style.display = 'none';
+            document.getElementById('t3').style.display = 'none';
+            document.getElementById('t4').style.display = 'none';
+            
+            document.getElementById('t' + tela).style.display = 'block';
+        }
+
+        // Corações flutuantes no fundo
+        function criarDecoracao() {
+            const emojis = ['❤️', '🌸', '✨'];
+            const d = document.createElement('div');
+            d.className = 'decoracao';
+            d.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            d.style.left = Math.random() * 100 + 'vw';
+            d.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(d);
+            setTimeout(() => d.remove(), 4000);
+        }
+
+        setInterval(criarDecoracao, 600);
+    </script>
+</body>
+</html>
